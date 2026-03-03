@@ -1,261 +1,186 @@
-/* ============
-   DATA (Projects)
-   - Titles shown without prefixes
-   - Links preserved
-============== */
+// Mobile Menu
+const toggle = document.querySelector(".nav-toggle");
+const menu = document.querySelector(".mobile-menu");
 
-const PROJECTS = [
-  { name: "OOP-Project", owner: "Sania1125", desc: "Object-oriented programming project.", tags: ["OOP", "C++/Java?"] },
-  { name: "delish-bites-restaurant", owner: "Sania1125", desc: "Restaurant website UI.", tags: ["Web", "UI"] },
-  { name: "Mathematical_Modeling_and_Computing", owner: "Muqtasid-Khan", desc: "Math modeling & computing work.", tags: ["Math", "Computing"] },
-  { name: "AI-Exam-Generator", owner: "Sania1125", desc: "AI-based exam generation concept/project.", tags: ["AI", "Automation"] },
-  { name: "My-Portfolio", owner: "Sania1125", desc: "Previous portfolio iteration.", tags: ["Web", "Portfolio"] },
-  { name: "Ggoogle_Sign-in_-pg-clone-", owner: "Arfat-Anam", desc: "Google sign-in page clone.", tags: ["Clone", "HTML/CSS"] },
-  { name: "Airport-Management-System", owner: "Sania1125", desc: "Airport management system project.", tags: ["System", "CRUD"] },
-  { name: "E-commerce-system-", owner: "Sania1125", desc: "E-commerce system project.", tags: ["E-commerce", "Web"] },
-  { name: "Smart-House", owner: "Sania1125", desc: "Smart house concept/project.", tags: ["IoT", "Automation"] },
-  { name: "Shopping-website", owner: "rebiyamalik", desc: "Shopping website project.", tags: ["Web", "UI"] },
-  { name: "Number-Guessing-Game", owner: "Sania1125", desc: "Fun number guessing game.", tags: ["Game", "Logic"] },
-  { name: "Student-performance-tracker", owner: "Sania1125", desc: "Track student performance & results.", tags: ["Tracking", "Data"] },
-  { name: "Hospital-System", owner: "Sania1125", desc: "Hospital system project.", tags: ["System", "Records"] },
-  { name: "Mobile-AI-Assistant", owner: "Sania1125", desc: "Mobile AI assistant concept/project.", tags: ["Mobile", "AI"] },
-  { name: "Library-Project", owner: "Sania1125", desc: "Library management project.", tags: ["System", "OOP"] },
-  { name: "inventory-management-system", owner: "Sania1125", desc: "Inventory management system.", tags: ["Inventory", "CRUD"] },
+if (toggle && menu) {
+  toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    menu.hidden = expanded;
+  });
+
+  menu.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => {
+      toggle.setAttribute("aria-expanded", "false");
+      menu.hidden = true;
+    });
+  });
+}
+
+// Projects (names only)
+const projects = [
+  "OOP-Project",
+  "delish-bites-restaurant",
+  "Mathematical_Modeling_and_Computing",
+  "AI-Exam-Generator",
+  "My-Portfolio",
+  "Ggoogle_Sign-in_-pg-clone-",
+  "Airport-Management-System",
+  "E-commerce-system-",
+  "Smart-House",
+  "Shopping-website",
+  "Number-Guessing-Game",
+  "Student-performance-tracker",
+  "Hospital-System",
+  "Mobile-AI-Assistant",
+  "Library-Project",
+  "inventory-management-system"
 ];
 
-function repoUrl(p) {
-  return `https://github.com/${p.owner}/${p.name}`;
-}
+const grid = document.getElementById("projectsGrid");
 
-/* ============
-   UI: Nav toggle (mobile)
-============== */
-const navToggle = document.getElementById("navToggle");
-const navMenu = document.getElementById("navMenu");
+const descMap = {
+  "AI-Exam-Generator": "AI-based workflow project for structured question generation.",
+  "Mathematical_Modeling_and_Computing": "Applied computing for mathematical modeling and problem solving.",
+  "delish-bites-restaurant": "Responsive front-end restaurant UI with clean layout and navigation.",
+  "Airport-Management-System": "System-style project demonstrating structured workflows and logic.",
+  "Student-performance-tracker": "Tracking & reporting project aligned with data handling and analysis.",
+  "Hospital-System": "Organized system project focused on clear structure and user flows."
+};
 
-if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
-    const open = navMenu.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", String(open));
-  });
+if (grid) {
+  projects.forEach(name => {
+    const card = document.createElement("div");
+    card.className = "card tilt";
+    card.setAttribute("data-tilt", "");
 
-  // Close menu after clicking a link on mobile
-  navMenu.addEventListener("click", (e) => {
-    const t = e.target;
-    if (t && t.tagName === "A" && navMenu.classList.contains("open")) {
-      navMenu.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    }
-  });
-}
+    const desc = descMap[name] || "Project demonstrating structured development and implementation.";
 
-/* ============
-   Projects render + search + sort
-============== */
-const grid = document.getElementById("projectGrid");
-const search = document.getElementById("projectSearch");
-const sortBtn = document.getElementById("sortBtn");
-
-let asc = true;
-let current = [...PROJECTS];
-
-function renderProjects(list) {
-  if (!grid) return;
-  grid.innerHTML = "";
-
-  list.forEach((p) => {
-    const card = document.createElement("article");
-    card.className = "card project reveal";
-    card.setAttribute("data-name", p.name.toLowerCase());
-
-    const h = document.createElement("h3");
-    h.textContent = p.name;
-
-    const d = document.createElement("p");
-    d.textContent = p.desc || "Project on GitHub.";
-
-    const meta = document.createElement("div");
-    meta.className = "meta";
-    (p.tags || []).slice(0, 4).forEach((t) => {
-      const b = document.createElement("span");
-      b.className = "badge";
-      b.textContent = t;
-      meta.appendChild(b);
-    });
-
-    const a = document.createElement("a");
-    a.href = repoUrl(p);
-    a.target = "_blank";
-    a.rel = "noreferrer";
-    a.textContent = "View on GitHub →";
-
-    card.appendChild(h);
-    card.appendChild(d);
-    card.appendChild(meta);
-    card.appendChild(a);
-
+    card.innerHTML = `
+      <div class="glow" aria-hidden="true"></div>
+      <div class="card-body">
+        <div class="project">
+          <div class="bullet" aria-hidden="true"></div>
+          <div>
+            <div class="pname">${name}</div>
+            <p class="pdesc">${desc}</p>
+          </div>
+        </div>
+      </div>
+    `;
     grid.appendChild(card);
   });
-
-  // re-apply reveal observer
-  observeReveals();
 }
 
-function applyFilters() {
-  const q = (search?.value || "").trim().toLowerCase();
-  const filtered = current.filter((p) => p.name.toLowerCase().includes(q));
-  renderProjects(filtered);
-}
+// 4D Tilt + Dynamic glow tracking
+function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
 
-if (search) {
-  search.addEventListener("input", applyFilters);
-}
+function tilt(el) {
+  let rect = null;
+  const update = () => rect = el.getBoundingClientRect();
+  update();
 
-if (sortBtn) {
-  sortBtn.addEventListener("click", () => {
-    asc = !asc;
-    sortBtn.textContent = asc ? "Sort A→Z" : "Sort Z→A";
-    current.sort((a, b) => asc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
-    applyFilters();
+  el.addEventListener("mouseenter", update);
+  window.addEventListener("resize", update);
+
+  el.addEventListener("mousemove", (e) => {
+    if (!rect) update();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    el.style.setProperty("--mx", `${(x / rect.width) * 100}%`);
+    el.style.setProperty("--my", `${(y / rect.height) * 100}%`);
+
+    const rx = ((y / rect.height) - 0.5) * -10;
+    const ry = ((x / rect.width) - 0.5) * 12;
+
+    el.style.transform =
+      `perspective(900px) rotateX(${clamp(rx, -12, 12)}deg) rotateY(${clamp(ry, -14, 14)}deg) translateY(-2px)`;
+  });
+
+  el.addEventListener("mouseleave", () => {
+    el.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+    el.style.setProperty("--mx", "50%");
+    el.style.setProperty("--my", "40%");
   });
 }
 
-/* ============
-   Reveal on scroll
-============== */
-let revealObserver;
+document.querySelectorAll("[data-tilt]").forEach(tilt);
 
-function observeReveals() {
-  const items = document.querySelectorAll(".reveal:not(.visible)");
-  if (!items.length) return;
-
-  if (!revealObserver) {
-    revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-  }
-
-  items.forEach((el) => revealObserver.observe(el));
-}
-
-/* ============
-   3D Background (Three.js)
-   - lightweight, responsive
-   - honors prefers-reduced-motion
-============== */
-const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-function initThree() {
-  const canvas = document.getElementById("bg");
-  if (!canvas || typeof THREE === "undefined") return;
-
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
-
-  const scene = new THREE.Scene();
-
-  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.set(0, 0.2, 6);
-
-  // Lights
-  const ambient = new THREE.AmbientLight(0xffffff, 0.65);
-  scene.add(ambient);
-
-  const key = new THREE.PointLight(0xffffff, 1.1);
-  key.position.set(3, 2.2, 6);
-  scene.add(key);
-
-  const fill = new THREE.PointLight(0xffffff, 0.6);
-  fill.position.set(-4, -1, 4);
-  scene.add(fill);
-
-  // Main object (torus knot for “4D vibe”)
-  const geom = new THREE.TorusKnotGeometry(1.15, 0.36, 180, 24);
-  const mat = new THREE.MeshStandardMaterial({
-    color: 0xffffff,
-    metalness: 0.35,
-    roughness: 0.22,
-    transparent: true,
-    opacity: 0.85,
+// Parallax blobs
+const blobs = document.querySelectorAll(".blob");
+window.addEventListener("mousemove", (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5);
+  const y = (e.clientY / window.innerHeight - 0.5);
+  blobs.forEach((b, i) => {
+    const depth = (i + 1) * 16;
+    b.style.transform = `translate3d(${x * depth}px, ${y * depth}px, 0)`;
   });
-  const knot = new THREE.Mesh(geom, mat);
-  knot.position.set(1.4, 0.35, 0);
-  scene.add(knot);
+});
 
-  // Floating particles
-  const pCount = 900;
-  const pGeom = new THREE.BufferGeometry();
-  const positions = new Float32Array(pCount * 3);
-  for (let i = 0; i < pCount; i++) {
-    positions[i * 3 + 0] = (Math.random() - 0.5) * 26;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 16;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 18;
-  }
-  pGeom.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  const pMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.02, transparent: true, opacity: 0.55 });
-  const points = new THREE.Points(pGeom, pMat);
-  scene.add(points);
+// Animated canvas background (stars)
+const canvas = document.getElementById("bg");
+const ctx = canvas?.getContext("2d");
+let W = 0, H = 0;
 
-  // Depth / parallax from mouse
-  let mouseX = 0, mouseY = 0;
-  window.addEventListener("mousemove", (e) => {
-    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-  }, { passive: true });
-
-  // Scroll-based subtle movement
-  let scrollY = 0;
-  window.addEventListener("scroll", () => {
-    scrollY = window.scrollY || 0;
-  }, { passive: true });
-
-  function onResize() {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-  }
-  window.addEventListener("resize", onResize);
-
-  // Animation loop
-  function tick() {
-    // keep it calm for reduced motion users
-    const t = Date.now() * 0.001;
-
-    if (!prefersReduced) {
-      knot.rotation.x = t * 0.25;
-      knot.rotation.y = t * 0.35;
-      points.rotation.y = t * 0.02;
-    }
-
-    // Parallax “depth”
-    const parX = mouseX * 0.25;
-    const parY = -mouseY * 0.18;
-
-    knot.position.x = 1.4 + parX;
-    knot.position.y = 0.35 + parY - (scrollY * 0.00012);
-
-    camera.position.x = parX * 0.55;
-    camera.position.y = 0.2 + parY * 0.35;
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(tick);
-  }
-
-  tick();
+function resize() {
+  if (!canvas) return;
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
 }
+window.addEventListener("resize", resize);
+resize();
 
-/* ============
-   Footer year
-============== */
-document.getElementById("year").textContent = String(new Date().getFullYear());
+const stars = [];
+function initStars() {
+  stars.length = 0;
+  const count = Math.floor((W * H) / 14000);
+  for (let i = 0; i < count; i++) {
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      z: Math.random() * 0.9 + 0.1,
+      r: Math.random() * 1.2 + 0.2,
+      vx: (Math.random() - 0.5) * 0.15,
+      vy: (Math.random() - 0.5) * 0.15
+    });
+  }
+}
+initStars();
+window.addEventListener("resize", initStars);
 
-/* Init */
-renderProjects(current);
-observeReveals();
-initThree();
+function draw() {
+  if (!ctx) return;
+  ctx.clearRect(0, 0, W, H);
+
+  for (const s of stars) {
+    s.x += s.vx * (1 / s.z);
+    s.y += s.vy * (1 / s.z);
+
+    if (s.x < -20) s.x = W + 20;
+    if (s.x > W + 20) s.x = -20;
+    if (s.y < -20) s.y = H + 20;
+    if (s.y > H + 20) s.y = -20;
+
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(255,255,255,${0.25 + (1 - s.z) * 0.35})`;
+    ctx.arc(s.x, s.y, s.r * (1 / s.z), 0, Math.PI * 2);
+    ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+// Demo contact form
+function fakeSubmit(e) {
+  e.preventDefault();
+  const note = document.getElementById("note");
+  if (note) note.textContent = "Thank you. This form can be connected to EmailJS / Formspree for real submissions.";
+  return false;
+}
+window.fakeSubmit = fakeSubmit;
+
+// Footer year
+const year = document.getElementById("year");
+if (year) year.textContent = String(new Date().getFullYear());
