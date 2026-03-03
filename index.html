@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sania Irshad — BS Mathematics (Semester 6) | Portfolio | Data Analysis | Web | Python" />
+  <title>Sania Irshad | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Animated starfield background -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <!-- Parallax blobs -->
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+
+  <!-- Top Navigation -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-dot"></span>
+        <span>Sania Irshad</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" hidden>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="badge">
+          <span class="pulse"></span>
+          CASPAM • BS Mathematics (Semester 6)
+        </div>
+
+        <h1 class="headline">
+          Building internship-ready solutions with
+          <span class="gradient-text">data analysis</span>,
+          <span class="gradient-text">web</span>, and
+          <span class="gradient-text">Python</span>.
+        </h1>
+
+        <p class="subhead">
+          I’m <strong>Sania Irshad</strong>, a student at <strong>CASPAM (Center for Advance Studies in Pure and Applied Mathematics)</strong>,
+          pursuing <strong>BS Mathematics (6th Semester)</strong> at <strong>Bahauddin Zakariya University, Multan</strong>.
+          I enjoy turning ideas into clean, user-friendly digital products and practical academic solutions.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="cv.pdf" download>
+            Download CV
+            <span class="btn-icon" aria-hidden="true">↓</span>
+          </a>
+
+          <a class="btn ghost" href="#projects">
+            View Projects
+            <span class="btn-icon" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="social-row">
+          <a class="chip" href="https://github.com/Sania1125" target="_blank" rel="noreferrer">
+            <span class="chip-dot"></span> GitHub: Sania1125
+          </a>
+
+          <!-- Replace # with your exact LinkedIn profile link when you have it -->
+          <a class="chip" href="#" target="_blank" rel="noreferrer">
+            <span class="chip-dot"></span> LinkedIn: Sania Irshad
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <!-- 3D card -->
+        <div class="tilt card hero-card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="avatar">
+              <!-- Optional: put assets/profile.jpg -->
+              <img src="assets/profile.jpg" alt="Sania Irshad" onerror="this.style.display='none'; this.parentElement.classList.add('avatar-fallback')" />
+              <div class="avatar-fallback-text" aria-hidden="true">SI</div>
+            </div>
+
+            <div class="hero-card-text">
+              <h2>Internship-ready profile</h2>
+              <p>
+                Strong communication • Teamwork • Project experience in web, OOP, DBMS, and Python.
+              </p>
+            </div>
+
+            <div class="mini-stats">
+              <div class="stat">
+                <div class="stat-num">15+</div>
+                <div class="stat-label">Projects</div>
+              </div>
+              <div class="stat">
+                <div class="stat-num">Multi</div>
+                <div class="stat-label">Skillset</div>
+              </div>
+              <div class="stat">
+                <div class="stat-num">Open</div>
+                <div class="stat-label">to Internships</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span class="dot"></span>
+              <span>Available for internships • 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hint">
+          Move your cursor on the card ✨
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>
+          A mathematics student with a strong interest in problem-solving, data, and software development.
+          I build practical projects, collaborate effectively in teams, and communicate clearly with both technical and non-technical audiences.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Education</h3>
+            <ul class="list">
+              <li><strong>CASPAM</strong> — Center for Advance Studies in Pure and Applied Mathematics</li>
+              <li><strong>BS Mathematics</strong> — 6th Semester</li>
+              <li><strong>Bahauddin Zakariya University</strong>, Multan</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Leadership & Service</h3>
+            <p class="muted">
+              Recently served as a member of the department welfare society, contributing to coordination, collaboration,
+              and student-focused initiatives.
+            </p>
+            <div class="pill-row">
+              <span class="pill">Teamwork</span>
+              <span class="pill">Communication</span>
+              <span class="pill">Coordination</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p>
+          Practical, project-based skills focused on delivering results in internships and industry environments.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Technical</h3>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">OOP</span>
+              <span class="tag">DBMS (Basics)</span>
+              <span class="tag">HTML</span>
+              <span class="tag">Git & GitHub</span>
+              <span class="tag">Website Hosting (GitHub Pages)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Data & Productivity</h3>
+            <div class="tags">
+              <span class="tag">Data Analysis</span>
+              <span class="tag">MS Office (Expert)</span>
+              <span class="tag">Excel (Finance-focused learning)</span>
+            </div>
+            <p class="muted small">
+              Currently working to become an advanced Excel user for finance workflows (clean reporting, dashboards, and analysis).
+            </p>
+          </div>
+        </div>
+
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Communication</h3>
+            <div class="tags">
+              <span class="tag">Strong Communication</span>
+              <span class="tag">Team Collaboration</span>
+              <span class="tag">Content Writing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>AI & Automation</h3>
+            <div class="tags">
+              <span class="tag">Chatbots (Basics)</span>
+              <span class="tag">AI-based Tools (Project Experience)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p>
+          Selected work showcasing development, problem-solving, and applied computing. (Project names only, as requested.)
+        </p>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid" aria-live="polite"></div>
+
+      <div class="projects-footer">
+        <a class="btn ghost" href="https://github.com/Sania1125" target="_blank" rel="noreferrer">
+          Explore on GitHub
+          <span class="btn-icon" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" class="section">
+      <div class="section-head">
+        <h2>Achievements</h2>
+        <p>
+          Highlights that strengthen my internship profile. (You can edit these anytime.)
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Academic & Technical</h3>
+            <ul class="list">
+              <li>Built multiple course and practice projects across OOP, DBMS, and web development.</li>
+              <li>Applied computing for mathematical problem-solving and modeling.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Leadership & Community</h3>
+            <ul class="list">
+              <li>Member of the department welfare society, supporting coordination and student engagement.</li>
+              <li>Strong teamwork experience through group projects and collaborative tasks.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Professional Readiness</h3>
+            <ul class="list">
+              <li>Portfolio and GitHub structured for internship applications.</li>
+              <li>Clear communication and documentation habits for professional environments.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>
+          If you’re hiring interns or need a motivated team member for a project, I’d love to connect.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Quick Links</h3>
+            <div class="contact-links">
+              <a class="contact-link" href="https://github.com/Sania1125" target="_blank" rel="noreferrer">GitHub: Sania1125</a>
+              <!-- Replace # with your LinkedIn URL -->
+              <a class="contact-link" href="#" target="_blank" rel="noreferrer">LinkedIn: Sania Irshad</a>
+              <a class="contact-link" href="cv.pdf" download>Download CV</a>
+            </div>
+            <p class="muted small">
+              Tip: add your email and phone here for faster recruiter responses.
+            </p>
+          </div>
+        </div>
+
+        <div class="tilt card" data-tilt>
+          <div class="card-glow" aria-hidden="true"></div>
+          <div class="card-content">
+            <h3>Message</h3>
+            <form class="form" onsubmit="return handleFakeSubmit(event)">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="your@email.com" required />
+              </label>
+
+              <label>
+                <span>Message</span>
+                <textarea name="message" rows="4" placeholder="Write your message..." required></textarea>
+              </label>
+
+              <button class="btn primary" type="submit">
+                Send Message
+                <span class="btn-icon" aria-hidden="true">→</span>
+              </button>
+
+              <p class="muted small" id="formNote">
+                This form is a front-end demo. For a real form, connect EmailJS / Formspree / a backend.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Sania Irshad • Built for internship applications</div>
+      </footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
